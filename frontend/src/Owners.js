@@ -4,19 +4,19 @@ import OwnerLink from './OwnerLink'
 const Owners = () => {
     const [owners, setOwners] = useState([])
 
-    const ownersApi = `http://localhost:9292/owners`
+    const ownersApi = `http://localhost:3000/owners`
 
     useEffect(() => {
         fetch(ownersApi)
         .then(res => res.json())
         .then(setOwners)
-    })
+    },[ownersApi])
 
     return (
         <div>
             Owners:
             <ul>
-                {owners.map(owner => <OwnerLink owner={owner}/>)}
+                {owners.map(owner => <OwnerLink key={owner.id} owner={owner}/>)}
             </ul>
         </div>
     )
